@@ -7,19 +7,6 @@ require_once "widget/TopUpContent.php";
 require_once "widget/CategorySub.php";
 
 function themeConfig($form) {
-    $currentFilePath = __FILE__;
-    $currentDirectory = dirname($currentFilePath);
-    $indexPath = $currentDirectory . "/index.php";
-    $index_file_data = file_get_contents($indexPath);
-    if (strpos($index_file_data, "template-parts/footer.php") == false) {
-        die('');
-    }
-    $footerPath = $currentDirectory . "/template-parts/footer.php";
-    $foot_file_data = file_get_contents($footerPath);
-    if (strpos($foot_file_data, "https://www.sanji.one") == false) {
-        die('');
-    }
-    
     $logoUrl = new \Typecho\Widget\Helper\Form\Element\Text("logoUrl", null, null, _t("网站 Logo"), _t("在这里填写图片 URL，网站将显示 Logo"));
     $form->addInput($logoUrl->addRule("url", _t("请填写正确的 URL 地址")));
     
@@ -27,17 +14,10 @@ function themeConfig($form) {
     $form->addInput($categoryNum);
     
     $customHead = new \Typecho\Widget\Helper\Form\Element\文本区域("customHead", null, null, _t("head 代码"), _t("自定义 head 代码"));
-    getdata();
     $form->addInput($customHead);
     
     $customFooter = new \Typecho\Widget\Helper\Form\Element\文本区域("customFooter", null, null, _t("footer 代码"), _t("自定义 footer 代码"));
     $form->addInput($customFooter);
-    
-    $footerPath = $currentDirectory . "/template-parts/footer.php";
-    $foot_file_data = file_get_contents($footerPath);
-    if (strpos($foot_file_data, "https://www.sanji.one") == false) {
-        die('');
-    }
 }
 
 function themeFields($layout) {
@@ -52,50 +32,17 @@ function themeFields($layout) {
     $showToc = new \Typecho\Widget\Helper\Form\Element\Radio("showToc", array("1" => _t("显示"), "0" => _t("隐藏")), 0, _t("文章目录"), _t(''));
     $layout->addItem($showToc);
     
-    getdata();
-    
     $thumbnail = new \Typecho\Widget\Helper\Form\Element\Text("thumbnail", null, null, _t("缩略图"), _t("填入图片地址"));
-    $currentFilePath = __FILE__;
-    $currentDirectory = dirname($currentFilePath);
-    $indexPath = $currentDirectory . "/index.php";
-    $index_file_data = file_get_contents($indexPath);
-    if (strpos($index_file_data, "template-parts/footer.php") == false) {
-        die('');
-    }
-    $footerPath = $currentDirectory . "/template-parts/footer.php";
-    $foot_file_data = file_get_contents($footerPath);
-    if (strpos($foot_file_data, "https://www.sanji.one") == false) {
-        die('');
-    }
     $layout->addItem($thumbnail);
-    
+
     $showPage = new \Typecho\Widget\Helper\Form\Element\Radio("showPage", array("1" => _t("是"), "0" => _t("否")), 0, _t("<span class=\"removeByPost\">在左侧显示</span>"), _t("是：页面将在左侧显示；否：隐藏"));
     $layout->addItem($showPage);
-    
+
     $iconPage = new \Typecho\Widget\Helper\Form\Element\Text("iconPage", null, null, _t("<span class=\"removeByPost\">左侧显示内容</span>"), _t("填入html代码，可显示为图片、图标等。此内容由\"在左侧显示\"选项控制"));
     $layout->addItem($iconPage);
-    
-    $footerPath = $currentDirectory . "/template-parts/footer.php";
-    $foot_file_data = file_get_contents($footerPath);
-    if (strpos($foot_file_data, "https://www.sanji.one") == false) {
-        die('');
-    }
 }
 
 function postNavbarActive($archive, $slug) {
-    $currentFilePath = __FILE__;
-    $currentDirectory = dirname($currentFilePath);
-    $indexPath = $currentDirectory . "/index.php";
-    $index_file_data = file_get_contents($indexPath);
-    if (strpos($index_file_data, "template-parts/footer.php") == false) {
-        die('');
-    }
-    $footerPath = $currentDirectory . "/template-parts/footer.php";
-    $foot_file_data = file_get_contents($footerPath);
-    if (strpos($foot_file_data, "https://www.sanji.one") == false) {
-        die('');
-    }
-    
     if ($archive->is("post")) {
         $categories = $archive->categories;
         foreach ($categories as $category) {
@@ -106,23 +53,6 @@ function postNavbarActive($archive, $slug) {
     }
     return '';
 }
-
-function getdata() {
-    $currentFilePath = __FILE__;
-    $currentDirectory = dirname($currentFilePath);
-    $indexPath = $currentDirectory . "/index.php";
-    $index_file_data = file_get_contents($indexPath);
-    if (strpos($index_file_data, "template-parts/footer.php") == false) {
-        die('');
-    }
-    $footerPath = $currentDirectory . "/template-parts/footer.php";
-    $foot_file_data = file_get_contents($footerPath);
-    if (strpos($foot_file_data, "https://www.sanji.one") == false) {
-        die('');
-    }
-}
-
-getdata();
 
 function threadedComments($comments, $options) {
     $commentClass = '';
@@ -175,17 +105,5 @@ function threadedComments($comments, $options) {
         <?php } ?>
     </div>
     <?php
-    $currentFilePath = __FILE__;
-    $currentDirectory = dirname($currentFilePath);
-    $indexPath = $currentDirectory . "/index.php";
-    $index_file_data = file_get_contents($indexPath);
-    if (strpos($index_file_data, "template-parts/footer.php") == false) {
-        die('');
-    }
-    $footerPath = $currentDirectory . "/template-parts/footer.php";
-    $foot_file_data = file_get_contents($footerPath);
-    if (strpos($foot_file_data, "https://www.sanji.one") == false) {
-        die('');
-    }
 }
 ?>
