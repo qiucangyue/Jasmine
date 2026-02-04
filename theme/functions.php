@@ -13,10 +13,10 @@ function themeConfig($form) {
     $categoryNum = new \Typecho\Widget\Helper\Form\Element\Text("categoryNum", null, 5, _t("显示分类的数量"), _t("显示分类的数量，超过填数字将不显示"));
     $form->addInput($categoryNum);
     
-    $customHead = new \Typecho\Widget\Helper\Form\Element\Text("customHead", null, null, _t("head 代码"), _t("自定义 head 代码"));
+    $customHead = new \Typecho\Widget\Helper\Form\Element\Textarea("customHead", null, null, _t("head 代码"), _t("自定义 head 代码"));
     $form->addInput($customHead);
     
-    $customFooter = new \Typecho\Widget\Helper\Form\Element\Text("customFooter", null, null, _t("footer 代码"), _t("自定义 footer 代码"));
+    $customFooter = new \Typecho\Widget\Helper\Form\Element\Textarea("customFooter", null, null, _t("footer 代码"), _t("自定义 footer 代码"));
     $form->addInput($customFooter);
 }
 
